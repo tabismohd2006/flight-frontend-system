@@ -20,7 +20,7 @@ function Flights() {
   const getFlights = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/flights"
+        "https://flight-backend-system.onrender.com/api/flights"
       );
 
       setFlights(res.data.flights);

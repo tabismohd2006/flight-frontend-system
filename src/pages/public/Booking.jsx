@@ -31,7 +31,7 @@ function Booking() {
   const getFlight = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/flights/${id}`
+        `https://flight-backend-system.onrender.com/api/flights/${id}`
       );
 
       setFlight(res.data.flight);
@@ -73,7 +73,7 @@ function Booking() {
       };
 
       const res = await axios.post(
-        "http://localhost:5000/api/bookings/book",
+        "https://flight-backend-system.onrender.com/api/bookings/book",
         bookingData,
         {
           headers: {

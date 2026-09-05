@@ -14,7 +14,7 @@ function ManageUsers() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/auth/users",
+        "https://flight-backend-system.onrender.com/api/auth/users",
         {
           headers: {
             Authorization: `Bearer ${token}`,

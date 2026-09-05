@@ -30,7 +30,7 @@ function EditFlight() {
   const getFlight = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/flights/${id}`
+        `https://flight-backend-system.onrender.com/api/flights/${id}`
       );
 
       const f = res.data.flight;
@@ -70,7 +70,7 @@ function EditFlight() {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        `http://localhost:5000/api/flights/${id}`,
+        `https://flight-backend-system.onrender.com/api/flights/${id}`,
         formData,
         {
           headers: {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/payments";
+const API = "https://flight-backend-system.onrender.com/api/payments";
 
 export const createPayment = async (data, token) => {
   return axios.post(

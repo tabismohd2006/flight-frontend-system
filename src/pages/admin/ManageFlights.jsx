@@ -13,7 +13,7 @@ function ManageFlights() {
   const getFlights = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/flights"
+        "https://flight-backend-system.onrender.com/api/flights"
       );
 
       setFlights(res.data.flights);
@@ -31,7 +31,7 @@ function ManageFlights() {
       const token = localStorage.getItem("token");
 
       const res = await axios.delete(
-        `http://localhost:5000/api/flights/${id}`,
+        `https://flight-backend-system.onrender.com/api/flights/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

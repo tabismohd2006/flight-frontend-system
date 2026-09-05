@@ -14,7 +14,7 @@ function ManageBookings() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/bookings/all",
+        "https://flight-backend-system.onrender.com/api/bookings/all",
         {
           headers: {
             Authorization: `Bearer ${token}`,

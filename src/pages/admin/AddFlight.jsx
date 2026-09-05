@@ -30,7 +30,7 @@ function AddFlight() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:5000/api/flights/add",
+        "https://flight-backend-system.onrender.com/api/flights/add",
         formData,
         {
           headers: {

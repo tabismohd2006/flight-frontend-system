@@ -18,15 +18,15 @@ function Reports() {
       const token = localStorage.getItem("token");
 
       const [users, flights, bookings] = await Promise.all([
-        axios.get("http://localhost:5000/api/auth/users", {
+        axios.get("https://flight-backend-system.onrender.com/api/auth/users", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }),
 
-        axios.get("http://localhost:5000/api/flights"),
+        axios.get("https://flight-backend-system.onrender.com/api/flights"),
 
-        axios.get("http://localhost:5000/api/bookings/all", {
+        axios.get("https://flight-backend-system.onrender.com/api/bookings/all", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
