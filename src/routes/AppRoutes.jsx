@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import MainLayout from "../layouts/MainLayout";
+import MainLayout from "../Layouts/MainLayout";
 
 import Home from "../pages/public/Home";
 import Flights from "../pages/public/Flights";
@@ -20,7 +20,7 @@ import EditFlight from "../pages/admin/EditFlight";
 import ManageBookings from "../pages/admin/ManageBookings";
 import ManageUsers from "../pages/admin/ManageUsers";
 import Profile from "../pages/user/Profile";
-import OffersPage from "../pages/public/OffersPage";
+import OffersPage from "../pages/public/Offerspage";
 import Reports from "../pages/admin/Reports";
 
 
