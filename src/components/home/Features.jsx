@@ -37,7 +37,7 @@ function Features() {
   ];
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-14 sm:py-16 lg:py-28">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -57,7 +57,7 @@ function Features() {
 
           </span>
 
-          <h2 className="mt-5 text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
 
             Travel Smarter With
 
@@ -67,7 +67,7 @@ function Features() {
 
           </h2>
 
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-5 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
 
             Experience seamless booking, secure payments,
             premium support and unforgettable journeys
@@ -80,14 +80,18 @@ function Features() {
         {/* Features Grid */}
 
         <div
-          className="
-            mt-16
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            xl:grid-cols-4
-            gap-8
-          "
+         className="
+mt-12
+sm:mt-16
+grid
+grid-cols-1
+sm:grid-cols-2
+lg:grid-cols-2
+xl:grid-cols-4
+gap-5
+sm:gap-6
+lg:gap-8
+"
         >
 
           {features.map((item, index) => (
@@ -123,19 +127,19 @@ function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mt-20"
+         className="mt-14 sm:mt-16 lg:mt-20" 
         >
-          <div className="rounded-3xl bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 p-8 md:p-12 shadow-2xl">
+          <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 p-6 sm:p-8 md:p-12 shadow-2xl">
 
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-6 lg:gap-8 text-center lg:text-left">
 
               <div className="text-center lg:text-left">
 
-                <h2 className="text-3xl md:text-4xl font-bold text-white">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   Ready For Your Next Adventure?
                 </h2>
 
-                <p className="mt-4 text-blue-100 max-w-2xl leading-7">
+                <p className="mt-4 text-sm sm:text-base text-blue-100 max-w-2xl leading-6 sm:leading-7">
                   Book your flight in minutes, compare the best prices,
                   and travel with confidence anywhere in the world.
                 </p>
@@ -143,19 +147,26 @@ function Features() {
               </div>
 
               <button
-                className="
-                  shrink-0
-                  rounded-2xl
-                  bg-white
-                  px-8
-                  py-4
-                  font-semibold
-                  text-blue-600
-                  transition-all
-                  duration-300
-                  hover:scale-105
-                  hover:shadow-xl
-                "
+               className="
+w-full
+sm:w-auto
+shrink-0
+rounded-xl
+sm:rounded-2xl
+bg-white
+px-6
+sm:px-8
+py-3
+sm:py-4
+text-sm
+sm:text-base
+font-semibold
+text-blue-600
+transition-all
+duration-300
+hover:scale-105
+hover:shadow-xl
+"
               >
                 Book Your Flight
               </button>

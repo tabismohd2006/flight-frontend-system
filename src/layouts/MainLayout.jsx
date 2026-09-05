@@ -8,7 +8,8 @@ function MainLayout() {
     <>
       <Navbar />
 
-      <main>
+      {/* Fixed Navbar ke liye top padding */}
+      <main className="pt-16 sm:pt-20 min-h-screen">
         <Outlet />
       </main>
 

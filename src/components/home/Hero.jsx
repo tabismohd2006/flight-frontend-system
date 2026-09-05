@@ -19,9 +19,7 @@ const searchFlights = () => {
 
   return (
 
-  <section
-  className="relative min-h-screen flex items-center overflow-x-hidden pt-20"
->
+<section className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-10">
 
       {/* Background */}
 
@@ -37,9 +35,9 @@ const searchFlights = () => {
 
       {/* Content */}
 
-    <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-8">
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left */}
 
@@ -49,7 +47,7 @@ const searchFlights = () => {
             transition={{ duration:.8 }}
           >
 
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white mb-6">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white mb-6 text-sm sm:text-base">
 
               <Plane size={18} />
 
@@ -59,7 +57,7 @@ const searchFlights = () => {
 
             </div>
 
-            <h1 className="text-white font-bold leading-tight text-5xl sm:text-6xl xl:text-7xl">
+            <h1 className="text-white font-bold leading-tight text-4xl sm:text-5xl md:text-6xl xl:text-7xl">
 
               Book Your
 
@@ -71,17 +69,17 @@ const searchFlights = () => {
 
             </h1>
 
-            <p className="text-gray-200 mt-6 text-lg max-w-xl leading-8">
+            <p className="text-gray-200 mt-6 text-base sm:text-lg max-w-xl leading-7 sm:leading-8">
 
               Find affordable flights, discover amazing destinations,
               and travel comfortably with trusted airlines across the globe.
 
             </p>
 
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-10">
+          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-10">
 
               <button
-                className="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 transition text-white font-semibold flex items-center gap-2"
+               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 transition text-white font-semibold flex items-center justify-center gap-2"
               >
 
                 Book Now
@@ -91,7 +89,7 @@ const searchFlights = () => {
               </button>
 
               <button
-                className="px-8 py-4 rounded-xl border border-white text-white hover:bg-white hover:text-black transition"
+               className="w-full sm:w-auto px-8 py-4 rounded-xl border border-white text-white hover:bg-white hover:text-black transition"
               >
 
                 Explore Flights
@@ -100,7 +98,7 @@ const searchFlights = () => {
 
             </div>
 
-         <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-14 text-center lg:text-left">
+       <div className="grid grid-cols-3 gap-3 sm:gap-6 mt-12 text-center lg:text-left">
 
               <div>
 
@@ -166,13 +164,13 @@ const searchFlights = () => {
            className="w-full flex justify-center lg:justify-end"
           >
 
-          <div className="w-full max-w-lg bg-white/15 backdrop-blur-2xl border border-white/20 rounded-3xl p-6 sm:p-8 shadow-2xl">
+          <div className="w-full max-w-md lg:max-w-lg bg-white/15 backdrop-blur-2xl border border-white/20 rounded-3xl p-5 sm:p-8 shadow-2xl">
 
               <h2 className="text-2xl font-bold text-white mb-6">
                 Search Flights
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
                 {/* From */}
 
@@ -245,7 +243,7 @@ const searchFlights = () => {
 
              <button
   onClick={searchFlights}
-  className="mt-8 w-full bg-blue-600 hover:bg-blue-700 transition rounded-xl py-4 text-lg font-semibold text-white flex items-center justify-center gap-2"
+className="mt-6 sm:mt-8 w-full bg-blue-600 hover:bg-blue-700 transition rounded-xl py-4 text-lg font-semibold text-white flex items-center justify-center gap-2"
 >
                 <Plane size={20} />
 

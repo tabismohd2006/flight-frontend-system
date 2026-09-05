@@ -20,6 +20,7 @@ function EditFlight() {
     aircraft: "",
     status: "Scheduled",
   });
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -48,7 +49,6 @@ function EditFlight() {
         aircraft: f.aircraft,
         status: f.status,
       });
-
     } catch (error) {
       console.log(error);
     }
@@ -63,8 +63,8 @@ function EditFlight() {
 
   const updateFlight = async (e) => {
     e.preventDefault();
+
     setLoading(true);
-    setLoading(false);
 
     try {
       const token = localStorage.getItem("token");
@@ -82,7 +82,6 @@ function EditFlight() {
       alert(res.data.message);
 
       navigate("/admin/flights");
-
     } catch (error) {
       console.log(error);
 
@@ -90,77 +89,81 @@ function EditFlight() {
         error.response?.data?.message ||
           "Update Failed"
       );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <section className="min-h-screen bg-slate-100 pt-28 pb-16">
-      <div className="max-w-3xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
+    <section className="min-h-screen bg-slate-100 pt-24 sm:pt-28 pb-10 sm:pb-16">
 
-        <h1 className="text-4xl font-bold mb-8">
-          Edit Flight
-        </h1>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
-        <form
-          onSubmit={updateFlight}
-          className="grid grid-cols-2 gap-5"
-        >
-{Object.keys(formData).map((key) => (
+        <div className="bg-white rounded-3xl shadow-xl p-5 sm:p-8">
 
-  key === "status" ? (
+          <h1 className="text-3xl sm:text-4xl font-bold mb-8">
+            Edit Flight
+          </h1>
 
-    <select
-      key={key}
-      name={key}
-      value={formData[key]}
-      onChange={handleChange}
-      className="border p-3 rounded-lg"
-    >
-      <option value="Scheduled">Scheduled</option>
-      <option value="Delayed">Delayed</option>
-      <option value="Cancelled">Cancelled</option>
-    </select>
+          <form
+            onSubmit={updateFlight}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          >
 
-  ) : (
+            {Object.keys(formData).map((key) =>
+              key === "status" ? (
+                <select
+                  key={key}
+                  name={key}
+                  value={formData[key]}
+                  onChange={handleChange}
+                  className="border rounded-xl p-3 w-full"
+                >
+                  <option value="Scheduled">Scheduled</option>
+                  <option value="Delayed">Delayed</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+              ) : (
+                <input
+                  key={key}
+                  type={
+                    key.includes("Time")
+                      ? "datetime-local"
+                      : key === "price" ||
+                        key.includes("Seats")
+                      ? "number"
+                      : "text"
+                  }
+                  name={key}
+                  value={formData[key]}
+                  onChange={handleChange}
+                  placeholder={key}
+                  className="border rounded-xl p-3 w-full"
+                />
+              )
+            )}
 
-    <input
-      key={key}
-      type={
-        key.includes("Time")
-          ? "datetime-local"
-          : key === "price" ||
-            key.includes("Seats")
-          ? "number"
-          : "text"
-      }
-      name={key}
-      value={formData[key]}
-      onChange={handleChange}
-      placeholder={key}
-      className="border p-3 rounded-lg"
-    />
+            <button
+              disabled={loading}
+              className="md:col-span-2 bg-green-600 hover:bg-green-700 transition text-white py-3 rounded-xl disabled:bg-gray-400"
+            >
+              {loading ? "Updating..." : "Update Flight"}
+            </button>
 
-  )
+            <button
+              type="button"
+              onClick={() => navigate("/admin/flights")}
+              className="md:col-span-2 bg-gray-600 hover:bg-gray-700 transition text-white py-3 rounded-xl"
+            >
+              Cancel
+            </button>
 
-))}
+          </form>
 
-       <button
-  disabled={loading}
-  className="col-span-2 bg-green-600 text-white py-3 rounded-xl disabled:bg-gray-400"
->
-  {loading ? "Updating..." : "Update Flight"}
-</button>
-          <button
-  type="button"
-  onClick={() => navigate("/admin/flights")}
-  className="col-span-2 bg-gray-600 text-white py-3 rounded-xl hover:bg-gray-700 transition"
->
-  Cancel
-</button>
-
-        </form>
+        </div>
 
       </div>
+
     </section>
   );
 }

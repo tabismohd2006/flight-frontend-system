@@ -11,9 +11,9 @@ function Footer() {
   return (
     <footer className="bg-slate-900 text-white">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10">
 
           {/* Company */}
 
@@ -21,18 +21,15 @@ function Footer() {
 
             <Link
               to="/"
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 justify-center sm:justify-start"
             >
-
               <Plane
                 className="text-blue-400"
                 size={34}
               />
 
-              <h2 className="text-3xl font-bold">
-
+              <h2 className="text-2xl sm:text-3xl font-bold">
                 SkyBook
-
               </h2>
 
             </Link>
@@ -41,18 +38,16 @@ function Footer() {
               className="
               mt-6
               text-gray-400
-              leading-8
+              leading-7
+              text-center
+              sm:text-left
               "
             >
-
               Book flights with confidence.
               Compare airlines, grab amazing
               deals and enjoy hassle-free
               travel worldwide.
-
             </p>
-
-           
 
           </div>
 
@@ -62,52 +57,50 @@ function Footer() {
 
             <h3
               className="
-              text-2xl
+              text-xl
+              sm:text-2xl
               font-bold
               mb-6
+              text-center
+              sm:text-left
               "
             >
-
               Quick Links
-
             </h3>
 
             <ul
               className="
               space-y-4
               text-gray-400
+              text-center
+              sm:text-left
               "
             >
-
               <li><Link to="/">Home</Link></li>
-
               <li><Link to="/flights">Flights</Link></li>
-
               <li><Link to="/offers">Offers</Link></li>
-
               <li><Link to="/about">About</Link></li>
-
               <li><Link to="/contact">Contact</Link></li>
 
             </ul>
 
           </div>
 
+          {/* Destinations */}
+
           <div>
 
-            <h3 className="text-2xl font-bold mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold mb-6 text-center sm:text-left">
               Popular Destinations
             </h3>
 
-            <ul className="space-y-4 text-gray-400">
-
+            <ul className="space-y-4 text-gray-400 text-center sm:text-left">
               <li>Delhi</li>
               <li>Mumbai</li>
               <li>Goa</li>
               <li>Dubai</li>
               <li>Singapore</li>
               <li>Paris</li>
-
             </ul>
 
           </div>
@@ -116,16 +109,16 @@ function Footer() {
 
           <div>
 
-            <h3 className="text-2xl font-bold mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold mb-6 text-center sm:text-left">
               Contact Us
             </h3>
 
             <div className="space-y-5 text-gray-400">
 
-              <div className="flex items-start gap-3">
+              <div className="flex items-start justify-center sm:justify-start gap-3">
 
                 <MapPin
-                  className="text-blue-400 mt-1"
+                  className="text-blue-400 mt-1 shrink-0"
                   size={20}
                 />
 
@@ -135,10 +128,10 @@ function Footer() {
 
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center sm:justify-start gap-3">
 
                 <Phone
-                  className="text-blue-400"
+                  className="text-blue-400 shrink-0"
                   size={20}
                 />
 
@@ -146,14 +139,16 @@ function Footer() {
 
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center sm:justify-start gap-3">
 
                 <Mail
-                  className="text-blue-400"
+                  className="text-blue-400 shrink-0"
                   size={20}
                 />
 
-                <p>support@skybook.com</p>
+                <p className="break-all">
+                  support@skybook.com
+                </p>
 
               </div>
 
@@ -163,11 +158,11 @@ function Footer() {
 
         </div>
 
-        {/* Bottom Footer */}
+        {/* Bottom */}
 
         <div
           className="
-            mt-14
+            mt-12
             border-t
             border-slate-700
             pt-8
@@ -176,11 +171,11 @@ function Footer() {
             md:flex-row
             items-center
             justify-between
-            gap-4
+            gap-5
           "
         >
 
-          <p className="text-gray-400 text-center md:text-left">
+          <p className="text-gray-400 text-center text-sm sm:text-base">
             © 2026 SkyBook. All Rights Reserved.
           </p>
 
@@ -192,9 +187,11 @@ function Footer() {
               })
             }
             className="
+              w-full
+              sm:w-auto
               rounded-full
               bg-blue-600
-              px-5
+              px-6
               py-3
               text-sm
               font-semibold

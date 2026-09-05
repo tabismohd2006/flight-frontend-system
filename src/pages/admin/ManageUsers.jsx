@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function ManageUsers() {
-
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -11,9 +10,7 @@ function ManageUsers() {
   }, []);
 
   const getUsers = async () => {
-
     try {
-
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
@@ -26,134 +23,128 @@ function ManageUsers() {
       );
 
       setUsers(res.data.users);
-
     } catch (error) {
-
       console.log(error);
-
     }
-
   };
+
   const filteredUsers = users.filter((user) => {
+    return (
+      user.name.toLowerCase().includes(search.toLowerCase()) ||
+      user.email.toLowerCase().includes(search.toLowerCase())
+    );
+  });
 
   return (
+    <section className="min-h-screen bg-slate-100 pt-24 sm:pt-28 pb-10 sm:pb-16">
 
-    user.name
-      .toLowerCase()
-      .includes(search.toLowerCase()) ||
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    user.email
-      .toLowerCase()
-      .includes(search.toLowerCase())
-
-  );
-
-});
-
-  return (
-
-    <section className="min-h-screen bg-slate-100 pt-28 pb-16">
-
-      <div className="max-w-7xl mx-auto px-4">
-
-        <h1 className="text-4xl font-bold mb-8">
-
+        <h1 className="text-3xl sm:text-4xl font-bold mb-8">
           Manage Users
-
         </h1>
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
 
-  <input
-    type="text"
-    placeholder="Search User..."
-    value={search}
-    onChange={(e) => setSearch(e.target.value)}
-    className="border rounded-xl px-4 py-3 w-full md:w-96"
-  />
+        <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-4 mb-8">
 
-  <div className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold">
+          <input
+            type="text"
+            placeholder="Search User..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="border rounded-xl px-4 py-3 w-full lg:w-96"
+          />
 
-    Total Users : {filteredUsers.length}
+          <div className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold text-center">
+            Total Users : {filteredUsers.length}
+          </div>
 
-  </div>
+        </div>
 
-</div>
+        <div className="bg-white rounded-2xl shadow overflow-hidden">
 
-        <div className="overflow-x-auto bg-white rounded-2xl shadow">
+          <div className="overflow-x-auto">
 
-          <table className="w-full">
+            <table className="min-w-[700px] w-full">
 
-            <thead className="bg-blue-600 text-white">
+              <thead className="bg-blue-600 text-white">
 
-              <tr>
+                <tr>
+                  <th className="p-4 text-left">Name</th>
+                  <th className="p-4 text-left">Email</th>
+                  <th className="p-4 text-left">Phone</th>
+                  <th className="p-4 text-left">Role</th>
+                </tr>
 
-                <th className="p-4">Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
+              </thead>
 
-              </tr>
+              <tbody>
 
-            </thead>
+                {filteredUsers.length === 0 ? (
 
-           <tbody>
+                  <tr>
 
-  {filteredUsers.length === 0 ? (
+                    <td
+                      colSpan="4"
+                      className="py-10 text-lg text-center"
+                    >
+                      No Users Found
+                    </td>
 
-    <tr>
+                  </tr>
 
-      <td
-        colSpan="4"
-        className="py-10 text-xl text-center"
-      >
-        No Users Found
-      </td>
+                ) : (
 
-    </tr>
+                  filteredUsers.map((user) => (
 
-  ) : (
+                    <tr
+                      key={user._id}
+                      className="border-b hover:bg-gray-50"
+                    >
 
-    filteredUsers.map((user) => (
+                      <td className="p-4 whitespace-nowrap font-medium">
+                        {user.name}
+                      </td>
 
-      <tr
-        key={user._id}
-        className="border-b text-center"
-      >
+                      <td className="p-4 whitespace-nowrap">
+                        {user.email}
+                      </td>
 
-        <td className="p-4">
-          {user.name}
-        </td>
+                      <td className="p-4 whitespace-nowrap">
+                        {user.phone || "-"}
+                      </td>
 
-        <td>
-          {user.email}
-        </td>
+                      <td className="p-4 whitespace-nowrap capitalize">
 
-        <td>
-          {user.phone || "-"}
-        </td>
+                        <span
+                          className={`px-3 py-1 rounded-full text-sm font-medium ${
+                            user.role === "admin"
+                              ? "bg-purple-100 text-purple-700"
+                              : "bg-green-100 text-green-700"
+                          }`}
+                        >
+                          {user.role}
+                        </span>
 
-        <td className="capitalize">
-          {user.role}
-        </td>
+                      </td>
 
-      </tr>
+                    </tr>
 
-    ))
+                  ))
 
-  )}
+                )}
 
-</tbody>
+              </tbody>
 
-          </table>
+            </table>
+
+          </div>
 
         </div>
 
       </div>
 
     </section>
-
   );
-
 }
 
 export default ManageUsers;

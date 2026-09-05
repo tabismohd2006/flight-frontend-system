@@ -41,7 +41,10 @@ function Profile() {
     } catch (error) {
       console.log(error);
 
-      alert(error.response?.data?.message || "Failed to load profile");
+      alert(
+        error.response?.data?.message ||
+          "Failed to load profile"
+      );
     } finally {
       setLoading(false);
     }
@@ -50,7 +53,9 @@ function Profile() {
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center items-center">
-        <h1 className="text-3xl font-bold">Loading...</h1>
+        <h1 className="text-3xl font-bold">
+          Loading...
+        </h1>
       </div>
     );
   }
@@ -68,9 +73,11 @@ function Profile() {
   return (
     <section className="min-h-screen bg-slate-100 pt-28 pb-16">
       <div className="max-w-4xl mx-auto px-4">
+
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
 
           {/* Header */}
+
           <div className="bg-gradient-to-r from-blue-600 to-indigo-700 h-52 flex flex-col justify-center items-center text-white">
 
             <div className="w-28 h-28 rounded-full bg-white text-blue-700 flex items-center justify-center text-5xl font-bold border-4 border-white shadow-lg">
@@ -91,8 +98,12 @@ function Profile() {
 
             <div className="flex items-center gap-4 bg-slate-50 p-5 rounded-2xl">
               <User className="text-blue-600" />
+
               <div>
-                <p className="text-slate-500">Full Name</p>
+                <p className="text-slate-500">
+                  Full Name
+                </p>
+
                 <h2 className="font-bold text-lg">
                   {user.name}
                 </h2>
@@ -101,8 +112,12 @@ function Profile() {
 
             <div className="flex items-center gap-4 bg-slate-50 p-5 rounded-2xl">
               <Mail className="text-green-600" />
+
               <div>
-                <p className="text-slate-500">Email</p>
+                <p className="text-slate-500">
+                  Email
+                </p>
+
                 <h2 className="font-bold">
                   {user.email}
                 </h2>
@@ -111,8 +126,12 @@ function Profile() {
 
             <div className="flex items-center gap-4 bg-slate-50 p-5 rounded-2xl">
               <Phone className="text-orange-500" />
+
               <div>
-                <p className="text-slate-500">Phone</p>
+                <p className="text-slate-500">
+                  Phone
+                </p>
+
                 <h2 className="font-bold">
                   {user.phone || "Not Added"}
                 </h2>
@@ -121,8 +140,11 @@ function Profile() {
 
             <div className="flex items-center gap-4 bg-slate-50 p-5 rounded-2xl">
               <Shield className="text-purple-600" />
+
               <div>
-                <p className="text-slate-500">Role</p>
+                <p className="text-slate-500">
+                  Role
+                </p>
 
                 <span
                   className={`px-4 py-1 rounded-full text-white text-sm ${
@@ -133,7 +155,6 @@ function Profile() {
                 >
                   {user.role}
                 </span>
-
               </div>
             </div>
 
@@ -148,14 +169,13 @@ function Profile() {
                 <h2 className="font-bold">
                   {new Date(user.createdAt).toLocaleDateString("en-IN")}
                 </h2>
-
               </div>
-
             </div>
 
           </div>
 
         </div>
+
       </div>
     </section>
   );

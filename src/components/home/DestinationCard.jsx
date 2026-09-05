@@ -5,10 +5,10 @@ function DestinationCard({ destination }) {
   return (
 
     <div
-      className="group overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl duration-300"
+     className="group overflow-hidden rounded-2xl sm:rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300"
     >
 
-      <div className="relative overflow-hidden h-72">
+      <div className="relative overflow-hidden h-56 sm:h-64 lg:h-72">
 
         <img
           src={destination.image}
@@ -20,13 +20,13 @@ function DestinationCard({ destination }) {
 
         <div className="absolute bottom-5 left-5 text-white">
 
-          <h3 className="text-3xl font-bold">
+          <h3 className="text-2xl sm:text-3xl font-bold">
 
             {destination.city}
 
           </h3>
 
-          <p>
+         <p className="text-sm sm:text-base">
 
             {destination.country}
 
@@ -37,9 +37,9 @@ function DestinationCard({ destination }) {
       </div>
 
       {/* 👇👇 PART-2 YAHAN SE START HOGA 👇👇 */}
-            <div className="p-5">
+            <div className="p-4 sm:p-5">
 
-        <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center justify-between mb-4 sm:mb-5">
 
           <div className="flex items-center gap-2">
 
@@ -54,29 +54,32 @@ function DestinationCard({ destination }) {
 
           </div>
 
-          <h4 className="text-xl font-bold text-blue-600">
+          <h4 className="text-lg sm:text-xl font-bold text-blue-600">
             {destination.price}
           </h4>
 
         </div>
 
         <button
-          className="
-            w-full
-            rounded-xl
-            bg-blue-600
-            hover:bg-blue-700
-            text-white
-            py-3
-            font-semibold
-            transition-all
-            duration-300
-            flex
-            items-center
-            justify-center
-            gap-2
-            group
-          "
+         className="
+w-full
+rounded-xl
+bg-blue-600
+hover:bg-blue-700
+text-white
+py-3
+sm:py-3.5
+text-sm
+sm:text-base
+font-semibold
+transition-all
+duration-300
+flex
+items-center
+justify-center
+gap-2
+group
+"
         >
           Explore Destination
 

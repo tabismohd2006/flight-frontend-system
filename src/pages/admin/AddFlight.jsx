@@ -62,16 +62,17 @@ function AddFlight() {
   };
 
   return (
-    <section className="min-h-screen bg-slate-100 pt-28 pb-16">
-      <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-3xl p-8">
+    <section className="min-h-screen bg-slate-100 pt-24 sm:pt-28 pb-10 sm:pb-16">
 
-        <h1 className="text-4xl font-bold mb-8">
+      <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8">
+
+        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
           Add Flight
         </h1>
 
         <form
           onSubmit={handleSubmit}
-          className="grid grid-cols-2 gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
 
           <input
@@ -80,7 +81,7 @@ function AddFlight() {
             placeholder="Airline"
             value={formData.airline}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -90,7 +91,7 @@ function AddFlight() {
             placeholder="Flight Number"
             value={formData.flightNumber}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -100,7 +101,7 @@ function AddFlight() {
             placeholder="From"
             value={formData.from}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -110,7 +111,7 @@ function AddFlight() {
             placeholder="To"
             value={formData.to}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -119,7 +120,7 @@ function AddFlight() {
             name="departureTime"
             value={formData.departureTime}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -128,7 +129,7 @@ function AddFlight() {
             name="arrivalTime"
             value={formData.arrivalTime}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -138,7 +139,7 @@ function AddFlight() {
             placeholder="Duration"
             value={formData.duration}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -148,7 +149,7 @@ function AddFlight() {
             placeholder="Price"
             value={formData.price}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -158,7 +159,7 @@ function AddFlight() {
             placeholder="Total Seats"
             value={formData.totalSeats}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -168,7 +169,7 @@ function AddFlight() {
             placeholder="Available Seats"
             value={formData.availableSeats}
             onChange={handleChange}
-            className="border p-3 rounded-lg"
+            className="border p-3 rounded-lg w-full"
             required
           />
 
@@ -178,18 +179,20 @@ function AddFlight() {
             placeholder="Aircraft"
             value={formData.aircraft}
             onChange={handleChange}
-            className="border p-3 rounded-lg col-span-2"
+            className="border p-3 rounded-lg w-full md:col-span-2"
           />
 
           <button
             type="submit"
-            className="col-span-2 bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700"
+            className="w-full md:col-span-2 bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
           >
             Add Flight
           </button>
 
         </form>
+
       </div>
+
     </section>
   );
 }

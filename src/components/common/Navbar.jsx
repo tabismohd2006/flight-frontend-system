@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
   const isLoggedIn = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -20,41 +21,42 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Flights", path: "/flights" },
-  { name: "Offers", path: "/offers" },
 
-  ...(isLoggedIn
-    ? [
-        { name: "My Bookings", path: "/my-bookings" },
-        { name: "Profile", path: "/profile" },
-      ]
-    : []),
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Flights", path: "/flights" },
+    { name: "Offers", path: "/offers" },
 
-  ...(user?.role === "admin"
-    ? [
-        {
-          name: "Dashboard",
-          path: "/admin/dashboard",
-        },
-      ]
-    : []),
+    ...(isLoggedIn
+      ? [
+          { name: "My Bookings", path: "/my-bookings" },
+          { name: "Profile", path: "/profile" },
+        ]
+      : []),
 
-  { name: "About", path: "/about" },
-  { name: "Contact", path: "/contact" },
-];
+    ...(user?.role === "admin"
+      ? [
+          {
+            name: "Dashboard",
+            path: "/admin/dashboard",
+          },
+        ]
+      : []),
+
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/80 backdrop-blur-xl shadow-lg"
+            ? "bg-white/90 backdrop-blur-xl shadow-lg"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
 
           {/* Logo */}
 
@@ -64,10 +66,10 @@ const navLinks = [
           >
             <Plane
               className="text-blue-600"
-              size={32}
+              size={30}
             />
 
-            <h1 className="text-2xl font-bold text-blue-700">
+            <h1 className="text-xl sm:text-2xl font-bold text-blue-700">
               SkyBook
             </h1>
 
@@ -83,8 +85,7 @@ const navLinks = [
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `relative font-medium transition duration-300
-                  ${
+                  `font-medium transition duration-300 ${
                     isActive
                       ? "text-blue-600"
                       : "text-gray-700 hover:text-blue-600"
@@ -100,57 +101,58 @@ const navLinks = [
 
           {/* Desktop Buttons */}
 
-        <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
 
-  {isLoggedIn ? (
-    <button
-      onClick={() => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        window.location.href = "/";
-      }}
-      className="px-5 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700"
-    >
-      Logout
-    </button>
-  ) : (
-    <>
-      <Link
-        to="/login"
-        className="px-5 py-2 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition"
-      >
-        Login
-      </Link>
+            {isLoggedIn ? (
+              <button
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  localStorage.removeItem("user");
+                  window.location.href = "/";
+                }}
+                className="px-5 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition"
+              >
+                Logout
+              </button>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="px-5 py-2 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition"
+                >
+                  Login
+                </Link>
 
-      <Link
-        to="/register"
-        className="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
-      >
-        Register
-      </Link>
-    </>
-  )}
+                <Link
+                  to="/register"
+                  className="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
+                >
+                  Register
+                </Link>
+              </>
+            )}
 
-</div>
+          </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu */}
 
           <button
             onClick={() => setIsOpen(true)}
-            className="lg:hidden"
+            className="lg:hidden p-2"
           >
-            <Menu size={30} />
+            <Menu size={28} />
           </button>
 
         </div>
       </header>
 
-      {/* ================================================= */}
+      {/* Mobile Drawer */}
 
-      {/* 👇👇 PART-2 IS LINE KE NICHE START HOGA 👇👇 */}
-            <AnimatePresence>
+      <AnimatePresence>
+
         {isOpen && (
           <>
+
             {/* Overlay */}
 
             <motion.div
@@ -161,16 +163,17 @@ const navLinks = [
               onClick={() => setIsOpen(false)}
             />
 
-            {/* Mobile Drawer */}
+            {/* Drawer */}
 
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3 }}
-              className="fixed top-0 right-0 w-80 max-w-[85%] h-screen bg-white shadow-2xl z-50 lg:hidden"
+              className="fixed top-0 right-0 w-full max-w-sm h-screen bg-white shadow-2xl z-50 lg:hidden"
             >
-              {/* Header */}
+
+              {/* Drawer Header */}
 
               <div className="flex items-center justify-between p-5 border-b">
 
@@ -179,25 +182,29 @@ const navLinks = [
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-2"
                 >
-                  <Plane className="text-blue-600" size={28} />
+                  <Plane
+                    className="text-blue-600"
+                    size={28}
+                  />
 
                   <h2 className="text-xl font-bold text-blue-700">
                     SkyBook
                   </h2>
+
                 </Link>
 
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg hover:bg-gray-100 transition"
+                  className="p-2 rounded-lg hover:bg-gray-100"
                 >
                   <X size={28} />
                 </button>
 
               </div>
 
-              {/* Mobile Links */}
+              {/* Links */}
 
-              <div className="flex flex-col px-6 py-6 gap-3">
+              <div className="flex flex-col px-5 py-6 gap-2 overflow-y-auto">
 
                 {navLinks.map((item) => (
 
@@ -206,7 +213,7 @@ const navLinks = [
                     to={item.path}
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
-                      `rounded-lg px-4 py-3 font-medium transition-all duration-300 ${
+                      `rounded-lg px-4 py-3 font-medium transition ${
                         isActive
                           ? "bg-blue-600 text-white"
                           : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
@@ -222,38 +229,38 @@ const navLinks = [
 
               {/* Bottom Buttons */}
 
-              <div className="absolute bottom-8 left-6 right-6 flex flex-col gap-3">
+              <div className="absolute bottom-6 left-5 right-5 flex flex-col gap-3">
 
-             {isLoggedIn ? (
-  <button
-    onClick={() => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      window.location.href = "/";
-    }}
-    className="text-center py-3 rounded-lg bg-red-600 text-white"
-  >
-    Logout
-  </button>
-) : (
-  <>
-    <Link
-      to="/login"
-      onClick={() => setIsOpen(false)}
-      className="text-center py-3 rounded-lg border border-blue-600 text-blue-600"
-    >
-      Login
-    </Link>
+                {isLoggedIn ? (
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      localStorage.removeItem("user");
+                      window.location.href = "/";
+                    }}
+                    className="w-full text-center py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 transition"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      onClick={() => setIsOpen(false)}
+                      className="w-full text-center py-3 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition"
+                    >
+                      Login
+                    </Link>
 
-    <Link
-      to="/register"
-      onClick={() => setIsOpen(false)}
-      className="text-center py-3 rounded-lg bg-blue-600 text-white"
-    >
-      Register
-    </Link>
-  </>
-)}
+                    <Link
+                      to="/register"
+                      onClick={() => setIsOpen(false)}
+                      className="w-full text-center py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
+                    >
+                      Register
+                    </Link>
+                  </>
+                )}
 
               </div>
 
@@ -261,8 +268,8 @@ const navLinks = [
 
           </>
         )}
-      </AnimatePresence>
 
+      </AnimatePresence>
     </>
   );
 }
