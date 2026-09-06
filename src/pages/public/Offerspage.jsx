@@ -1,5 +1,4 @@
-import Offers from "../../components/home/Offers";
-
+import OffersPage from "../pages/public/OffersPage";
 function OffersPage() {
   return (
     <div className="pt-20">
