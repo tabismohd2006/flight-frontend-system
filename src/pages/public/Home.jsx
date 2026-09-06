@@ -1,5 +1,5 @@
 import Hero from "../../components/home/Hero";
-import PopularDestinations from "../../components/home/popularDestinations";
+import PopularDestinations from "../../components/home/PopularDestinations";
 import Features from "../../components/home/Features";
 import Offers from "../../components/home/Offers";
 import Airlines from "../../components/home/Airlines";
